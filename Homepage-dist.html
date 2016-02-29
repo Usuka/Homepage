@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<!--
+
+Simple homepage
+Author: Usuka
+Credit to Twily for his search bar JS
+
+to change links, edit content in <a>
+to change title, edit content in <h1>
+to change search options, ctrl+f //Search engines
+
+I think that's about it, have fun.
+
+--> 
+
+<html>
+
+<title>
+  Home
+</title>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+
+<!--
+Colours
+ctrl+f replace to change
+ Text:   #d2deab
+ Bg:     #170f0d
+ Fg:     #57434c
+ Fg1:    #997744
+ Fg2:    #452e22
+ Shadow: #100908
+ Bar:    #312C38
+ -->
+
+<style type="text/css">
+
+* {
+    text-decoration: none;
+    color: #d2deab;
+}
+
+html {
+    background: url("wall24.jpg") ;
+    background-size: 130%;
+    background-repeat: repeat;
+    color: #d2deab;
+    font-family: "Terminus", monospace;
+    font-size: 14px;
+}
+body {
+    background-color: #170f0d;
+    box-shadow: 5px 5px 5px #100908;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: auto;
+    text-align: center;
+    height: 600px;
+    padding: 10px 10px 10px 10px;
+    position: static ;
+    z-index: -1;
+    width: 200px;
+}
+
+  input, select, textarea{
+    background: #57434c;
+    width: 75%;
+    height: 30px;
+    padding: 0px 10px 0px 10px;
+    margin: auto;
+    margin-top: -5px;
+
+}
+
+#wrap {
+    background: #452e22;
+    width: 400px;
+    z-index: 1;
+    position: relative;
+    margin: 10px 10px 10px -100px ;
+    height: 6%;
+    box-shadow: 5px 5px 5px #100908;
+    padding: 18px 0px 5px 0px;
+
+}
+
+.links {
+    background: #452e22;
+    width: 280px;
+    z-index: 1;
+    position: relative;
+    margin: 40px 10px 10px -40px ;
+    box-shadow: 5px 5px 5px #100908;
+    padding: 20px 0px 5px 0px;
+    text-align: center;
+    height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+a:hover {
+    text-shadow: 1px 1px #100908;
+}
+
+.hv:hover table {
+    visibility: visible;
+}
+
+td:hover {
+    background: #997744;
+}
+
+.hv:hover b {
+    color: #997744;
+}
+
+b{
+    padding: 0px 0px 2px 0px;
+    text-align: center;
+    position: absolute;
+    left: 30%;
+    right: 30%;
+    background: #452e22;
+    z-index: 3
+}
+#q {
+    border: 0; border-radius: 1px;
+    font-family: "Terminus", monospace;
+    color: #d2deab;
+    text-align: center;
+    box-shadow: 2px 2px 2px #170f0d; 
+  }
+
+#left,#right{
+    padding: 5px 0px 5px 0px;
+    display: none;
+    white-space: nowrap;
+}
+
+#left{
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    /*
+    margin-right: 120px;
+    margin-left: 10px;
+    /**/
+}
+
+#right {
+     position: absolute;
+    right: 20px;
+    top: 15px;
+    /*
+    margin-left: 100px;
+    /**/
+}
+
+.links:hover{
+    width: 540px;
+    margin-left: -170px;
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+#two:hover{       
+    width: 600px;     
+    margin-left: -200px; 
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+#two>#left{
+    margin-right: 100px;
+}
+
+#three:hover{
+    width: 660px;
+    margin-left: -230px;
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+#four:hover{
+    width: 600px;     
+    margin-left: -200px; 
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+/*#four>#left{
+    margin-right: 100px;
+    margin-left: 20px;
+}
+
+#four>#right{
+    margin-left: 150px;
+}
+
+/**/
+
+.links:hover #left,.links:hover #right{
+    display: inline;
+}
+
+a{
+    padding: 0px 5px 0px 5px;
+}
+
+
+#block{
+    position: absolute;
+    z-index: 0;
+    background: #885d39;
+    top: 200px;
+    margin: auto;
+    right: 45%;
+    width:100px;
+    height: 400px;
+    box-shadow: 5px 5px 5px #170f0d; 
+}
+
+</style>
+
+<script type="text/javascript" language="javascript">
+var $=function(id) { return document.getElementById(id); };
+
+var search=[ // Search engines
+    ["",    "https://www.google.com/#q="],                               // Google (Default)
+    ["!g",  "https://www.google.com/#q="],                               // Google
+    ["!i",  "https://www.google.com/search?tbm=isch&q="],                // Google Images
+    ["!y",  "https://www.youtube.com/results?search_query="],            // YouTube
+    ["!w",  "http://en.wikipedia.org/w/index.php?search="],              // Wikipedia
+    ["!m",  "http://www.imdb.com/find?q="],                              // IMDb
+    ["!u",  "http://www.urbandictionary.com/define.php?term="],          // Urban Dictionary
+    ["!n",  "http://www.nyaa.se/?page=search&cats=0_0&filter=0&term="],  // Nyaa
+    ["!t",  "http://shop.tcgplayer.com/magic/product/show?ProductName="],// TCGplayer
+];
+
+
+var ss="";
+function init() {
+    for(var i=0;i<search.length;i++) if(search[i][0]=="") ss=search[i][1];
+    if(ss=="") alert("Error: Missing default search engine!");
+
+    build();
+
+    $('q').value="";
+    $('q').focus();
+}
+function handleQuery(e,q) { // Handle search query
+    var key=e.keyCode || e.which;
+
+    if(key==13) { // enter
+        if(q.lastIndexOf("!")!=-1) {
+            var x=q.lastIndexOf("!"),found=false;
+
+            for(var i=0;i<search.length;i++) {
+                if(search[i][0]==q.substr(x)) { // Find "!?"
+                    found=true; window.location=search[i][1]+q.substr(0,x).replace(/&/g,"%26");
+                }
+            }
+            if(!found) { // Invalid "!?", use default
+                window.location=ss+q.substr(0,x).replace(/&/g,"%26");
+            }
+        } else { // "!?" where not specified, use default
+            window.location=ss+q.replace(/&/g,"%26");
+        }
+    }
+}
+
+</script>
+
+<body onload="javascript:init();">
+   <h1 id="header">ミームマシン</h1>
+    <div id="wrap">
+     <input  autofocus type="text" id="q" value="" placeholder="" onkeypress="javascript:handleQuery(event,this.value);" onfocus="this.value=this.value" />
+    </div>
+    <div class="links">
+        <div id="left">
+            <a href="https://boards.4chan.org/a/catalog">/a/</a>
+            <a href="https://boards.4chan.org/g/catalog">/g/</a>
+            <a href="https://boards.4chan.org/k/catalog">/k/</a>
+        </div>
+        <b>4chan</b>
+        <div id="right">
+           
+            <a href="https://boards.4chan.org/c/catalog">/c/</a>
+            <a href="https://boards.4chan.org/w/catalog">/w/</a>
+            <a href="https://boards.4chan.org/tg/catalog">/tg/</a>
+        </div>
+    </div>
+    <div class="links" id="two">
+        <div id="left">
+            <a href="FILLER">Filler</a>
+            <a href="https://mail.google.com">Gmail</a>
+            <a href="Filler">Filler</a>
+        </div>
+        <b>Work</b>
+        <div id="right">
+            <a href="https://drive.google.com">Drive</a>
+            <a href="FILLER">Filler</a>
+            <a href="https://wiki.installgentoo.com/index.php/Main_Page">INGT</a>
+        </div>
+    </div>
+    <div class="links" id="three">
+        <div id="left">
+            <a href="https://www.reddit.com">Reddit</a><!--Leddit-->
+            <a href="https://www.imgur.com">Imgur</a>
+            <a href="https://www.youtube.com">Yutube</a>
+        </div>
+        <b>Fun</b>
+        <div id="right">
+            <a href="https://www.lainchan.org">Lains</a>
+            <a href="https:www.lewd.sx">lewd.sx</a>
+            <a href="http://www.tcgplayer.com">Tcg</a>
+        </div>
+    </div>
+        <div class="links" id="four">
+        <div id="left">
+            <a href="https://www.massdrop.com/buy">Mass</a>
+            <a href="https://www.animebytes.tv">AB</a>
+            <a href="https://www.nyaa.se">Nyaa</a>
+        </div>
+        <b>Msc</b>
+        <div id="right">
+            <a href="http://8ch.net/mai/catalog.html">Waifu</a>
+            <a href="http://www.tappedout.net">Tapp</a>
+            <a href="Filler">Filler</a>
+        </div>
+    </div>
+</body>
