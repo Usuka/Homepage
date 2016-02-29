@@ -20,6 +20,9 @@ Nyaa.se           !n
 Tcgplayer         !t  
 </pre>
 
+For example:  
+<pre>baroque period artwork !i</pre>
+would search google images for baroque period artwork
 
 #Issues
 Css var tags might not work in some browsers
