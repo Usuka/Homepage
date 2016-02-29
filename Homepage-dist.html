@@ -24,36 +24,41 @@ I think that's about it, have fun.
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 </head>
 
-<!--
-Colours
-ctrl+f replace to change
- Text:   #d2deab
- Bg:     #170f0d
- Fg:     #57434c
- Fg1:    #997744
- Fg2:    #452e22
- Shadow: #100908
- Bar:    #312C38
- -->
 
 <style type="text/css">
 
+:root{
+
+    /*
+    Use these to change colours
+    */
+
+    --text:#d2deab;
+    --main-bg:#170f0d;
+    --fg-one:#57434c;
+    --fg-two:#997744;
+    --fg-three:#452e22;
+    --shadow:#100908;
+    --bar-bg:#312c38;
+}
+
+
 * {
     text-decoration: none;
-    color: #d2deab;
+    color: var(--text);
 }
 
 html {
     background: url("wall24.jpg") ;
     background-size: 130%;
     background-repeat: repeat;
-    color: #d2deab;
+    color: var(--text);
     font-family: "Terminus", monospace;
     font-size: 14px;
 }
 body {
-    background-color: #170f0d;
-    box-shadow: 5px 5px 5px #100908;
+    background-color: var(--main-bg);
+    box-shadow: 5px 5px 5px var(--shadow);
     margin-right: auto;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -67,7 +72,7 @@ body {
 }
 
   input, select, textarea{
-    background: #57434c;
+    background: var(--fg-one);
     width: 75%;
     height: 30px;
     padding: 0px 10px 0px 10px;
@@ -77,24 +82,24 @@ body {
 }
 
 #wrap {
-    background: #452e22;
+    background: var(--fg-three);
     width: 400px;
     z-index: 1;
     position: relative;
     margin: 10px 10px 10px -100px ;
     height: 6%;
-    box-shadow: 5px 5px 5px #100908;
+    box-shadow: 5px 5px 5px var(--shadow);
     padding: 18px 0px 5px 0px;
 
 }
 
 .links {
-    background: #452e22;
+    background: var(--fg-three);
     width: 280px;
     z-index: 1;
     position: relative;
     margin: 40px 10px 10px -40px ;
-    box-shadow: 5px 5px 5px #100908;
+    box-shadow: 5px 5px 5px var(--shadow);
     padding: 20px 0px 5px 0px;
     text-align: center;
     height: 30px;
@@ -107,7 +112,7 @@ body {
 }
 
 a:hover {
-    text-shadow: 1px 1px #100908;
+    text-shadow: 1px 1px var(--shadow);
 }
 
 .hv:hover table {
@@ -115,11 +120,11 @@ a:hover {
 }
 
 td:hover {
-    background: #997744;
+    background: var(--fg-two);
 }
 
 .hv:hover b {
-    color: #997744;
+    color: var(--fg-two);
 }
 
 b{
@@ -128,15 +133,15 @@ b{
     position: absolute;
     left: 30%;
     right: 30%;
-    background: #452e22;
+    background: var(--fg-three);
     z-index: 3
 }
 #q {
     border: 0; border-radius: 1px;
     font-family: "Terminus", monospace;
-    color: #d2deab;
+    color: var(--text);
     text-align: center;
-    box-shadow: 2px 2px 2px #170f0d; 
+    box-shadow: 2px 2px 2px var(--main-bg); 
   }
 
 #left,#right{
@@ -233,7 +238,7 @@ a{
     right: 45%;
     width:100px;
     height: 400px;
-    box-shadow: 5px 5px 5px #170f0d; 
+    box-shadow: 5px 5px 5px var(--main-bg); 
 }
 
 </style>
