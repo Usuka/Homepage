@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+
+<!--
+
+Simple homepage
+Author: Usuka
+Credit to Twily for his search bar JS because I'm too lazy to make my own
+
+to change links, edit content in <a>
+to change title, edit content in <h1>
+to change search options, ctrl+f //Search engines
+to change section width, ctrl+f Bar width
+
+I think that's about it, have fun.
+
+"Do you wanna be like brown fububu? Here's how to do it:
+
+    Install linux
+    Listen to smooth jazz and post-rock progcore
+    Like asuka
+    Learn how to computer"
+
+        -animeposter from /w/
+
+This Homepage will be cooler in time. Just wait for me to get around to it and push more features to github.
+
+
+--> 
+
+<html>
+
+<title>
+  Home
+</title>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+
+
+<style type="text/css">
+:root{
+    /*
+    Use these to change colours
+    */
+    --text:#d2deab;
+    --main-bg:#170f0d;
+    --fg-one:#57434c;
+    --fg-two:#997744;
+    --fg-three:#452e22;
+    --shadow:#100908;
+    --bar-bg:#312c38;
+    --page-bg:#2E272A;
+    
+    /* 
+    Pink Neon
+    */
+
+    /*
+    --neon-1:rgba(255,0,84,0.6);
+    --neon-2:rgba(255,0,84,0.4);
+    --neon-3:rgba(255,0,84,0.2);
+    --neon-4:rgba(255,0,84,0.1);
+    */
+
+    --neon-1:rgba(254,0,0,0.6);
+    --neon-2:rgba(254,0,0,0.4);
+    --neon-3:rgba(254,0,0,0.2);
+    --neon-4:rgba(254,0,0,0.1);
+
+    /*
+    I should have labeled the varibles better, but fuck it.
+    You can figure them out.
+    */
+}
+* {
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.5s;
+}
+html {
+    background: var(--page-bg) url("bg1.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+    color: var(--text);
+    font-family: "Terminus", monospace;
+    font-size: 14px;
+}
+body {
+    background-color: var(--main-bg);
+    box-shadow: 5px 5px 5px var(--shadow);
+    margin-right: auto;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-left: auto;
+    text-align: center;
+    height: 480px;
+    padding: 10px 10px 10px 10px;
+    position: static ;
+    z-index: -1;
+    width: 180px;
+}
+#border{
+    position: absolute;
+    margin: auto;
+    top: 6%;
+    left: 10%;
+    height: 88%;
+    width: 80%;
+    z-index: -4;
+    background: var(--main-bg) url("bg2.jpg");
+    box-shadow: 0px 10px 5px var(--shadow);
+}
+#bumper{
+    position: absolute;
+    margin: auto;
+    top: 4%;
+    left: 9%;
+    height: 92%;
+    width: 82%;
+    z-index: -10;
+    background: var(--main-bg);
+    box-shadow: 10px 10px 5px var(--shadow);
+}
+a{
+    padding: 0px 5px 0px 5px;
+    color: var(--fg-three);
+    transition: shadow 0.1s, color 0.7s;
+
+}
+a:hover {
+    text-shadow: 2px 2px 2px var(--shadow);
+}
+h1{
+    margin: 10px auto 10px auto;
+}
+#header{
+    animation: neonspark 1s 3s forwards;
+}
+#header #n1 {
+    animation: neonspark 2.34s ease-in 10s backwards;
+}
+#header #n2 {
+    animation: neonspark 1s ease-in 3s infinite alternate; 
+}
+@keyframes neonspark  {
+    
+    0% {
+        text-shadow: none;
+    }
+    30% {
+        text-shadow: 2px 2px 5px  var(--neon-1);
+    }
+    60% {
+        text-shadow: 2px 2px 5px  var(--neon-1),
+                     2px 2px 8px  var(--neon-2);
+    }
+    80% {
+        text-shadow: none;
+    }
+    100% {
+        text-shadow: 2px 2px 5px  var(--neon-1),
+                     2px 2px 8px  var(--neon-2), 
+                     2px 2px 12px var(--neon-3), 
+                     2px 2px 11px var(--neon-4);
+    }
+}
+
+input, select, textarea{
+    background: var(--fg-one);
+    width: 80%;
+    height: 30px;
+    padding: 0px 10px 0px 10px;
+    margin: auto;
+    margin-top: -5px;
+}
+#wrap {
+    background: var(--fg-three);
+    width: 380px;
+    z-index: 1;
+    position: relative;
+    height: 30px;
+    margin: 10px 100px 40px -100px;
+    box-shadow: 5px 5px 5px var(--shadow);
+    padding: 12px 0px 5px 0px;
+}
+.links {
+    background: var(--fg-three);
+    width: 260px;
+    z-index: 2;
+    position: relative;
+    left: -40px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 5px var(--shadow);
+    padding: 20px 0px 5px 0px;
+    text-align: center;
+    height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.links:hover .folder{
+    left:160px;
+}
+.links:hover a{
+    color:var(--text);
+}
+.links:hover .show{
+    z-index: 1;
+}
+
+/*
+
+Bar width
+
+This section is used for the sizing of each section when it's hovered.
+What you want to set the margins to is: - ( Hovered Width - Initial Width ) / 2
+and set the respective title margin to that value but positive.
+
+*/ 
+
+#one:hover{
+    width: 580px;
+    margin-left: -160px;
+    margin-right: -160px;
+}
+#two:hover {
+    width: 660px;
+    margin-right: -210px;
+    margin-left: -210px;
+}
+#three:hover {
+    width: 660px;
+    margin-right: -210px;
+    margin-left: -210px;
+}
+#four:hover {
+    width: 580px;
+    margin-right: -170px;
+    margin-left: -170px;
+}
+#one:hover #chan {
+    left:160px;
+}
+#two:hover #work {
+    left:210px;
+}
+#three:hover #fun {
+    left:210px;
+}
+#four:hover #msc {
+    left: 170px;
+}
+
+
+
+
+.folder{
+    padding: 0px 40px 2px 40px;
+    font-size: 14px;
+    text-align: center;
+    margin:auto;
+    background: var(--fg-three);
+    z-index: 3;
+    position: absolute;
+    left: 0px;
+    width: 180px;
+    height: 40px;
+    text-shadow: 2px 2px 2px var(--main-bg);
+}
+#q {
+    border: 0; border-radius: 1px;
+    font-family: "Terminus", monospace;
+    color: var(--text);
+    text-align: center;
+    box-shadow: 2px 2px 2px var(--main-bg); 
+  }
+.show{
+    padding: 5px 0px 5px 0px;
+    white-space: nowrap;
+    display: inline;
+    margin: -5px 10px 0px 10px;
+    z-index: -4;
+}
+#left{
+float: left;
+}
+#right{
+float: right;
+}
+#block{
+    position: absolute;
+    z-index: 0;
+    background: #885d39;
+    top: 200px;
+    margin: auto;
+    right: 45%;
+    width:100px;
+    height: 400px;
+    box-shadow: 5px 5px 5px var(--main-bg); 
+}
+#notes{
+    margin: 10px 10px 10px 10px;
+    position: absolute;
+    background: none;
+    right: 15%;
+    top: 5%;
+    width: 220px;
+    height: 480px;
+    border-style: none;
+    border: none;
+}
+#todo {
+    margin: 10px 10px 10px 10px;
+    position: absolute;
+    background: var(--main-bg);
+    right: 5%;
+    top: 5%;
+    width: 200px;
+    height: 85px;
+    border-style: none;
+    border: none;
+    box-shadow: 5px 5px 5px var(--shadow); 
+}
+#notes:hover #todo, #notes:hover #du,{
+    margin: 10px 10px 10px 10px;
+    display: inline;
+    color: var(--text) ;
+}
+#notes:hover #todo {
+    height: 440px;
+}
+#notes:hover #du {
+    height: 360px;
+    color: var(--text);
+}
+#notes:hover #update {
+    top: -15px;
+}
+#totitle {
+    text-decoration: none;
+    background: none;
+    color: white;
+    z-index: 3;
+    margin: none;
+    padding: -10px -10px -10px -10px;
+    height: 0px;
+
+}
+#du {
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    text-align: left;
+    padding: none;
+    margin: none;
+    border-style: none;
+    border: none;
+    height: 10px;
+    width: 150px;
+    resize: none;
+    box-shadow: 5px 5px 5px var(--shadow);
+    color: var(--fg-one);
+    font-family: "Terminus", monospace;
+    font-size: 12px;
+    z-index: 2
+} 
+#update {
+    padding: 5px 10px 5px 10px;
+    background: var(--fg-three);
+    color: var(--text);
+    position: relative;
+    top: -55px;
+    z-index: 0;
+    border: none;
+    box-shadow: 5px 5px 5px var(--shadow);
+}
+#thread {
+    margin: 10px 10px 10px 10px;
+    position: absolute;
+    background: var(--main-bg);
+    left: 5%;
+    top: 5%;
+    width: 200px;
+    height: 80px;
+    border-style: none;
+    border: none;
+    box-shadow: 5px 5px 5px var(--shadow); 
+}
+#totitle{
+    box-shadow: 3px 3px 3px var(--shadow);
+}
+</style>
+
+<script type="text/javascript" language="javascript">
+var $=function(id) { return document.getElementById(id); };
+
+var search=[ // Search engines
+    ["",    "https://www.google.com/#q="],                               // Google (Default)
+    ["!o",  "https://www.google.com/#q="],                               // Google
+    ["!i",  "https://www.google.com/search?tbm=isch&q="],                // Google Images`
+    ["!y",  "https://www.youtube.com/results?search_query="],            // YouTube
+    ["!w",  "http://en.wikipedia.org/w/index.php?search="],              // Wikipedia
+    ["!m",  "http://www.imdb.com/find?q="],                              // IMDb
+    ["!u",  "http://www.urbandictionary.com/define.php?term="],          // Urban Dictionary
+    ["!n",  "http://www.nyaa.se/?page=search&cats=0_0&filter=0&term="],  // Nyaa
+    ["!t",  "http://shop.tcgplayer.com/magic/product/show?ProductName="],// TCGplayer
+    ["!a",  "https://aur.archlinux.org/packages/?O=0&K="],               // AUR
+];
+
+
+var ss="";
+function init() {
+    for(var i=0;i<search.length;i++) if(search[i][0]=="") ss=search[i][1];
+    if(ss=="") alert("Error: Missing default search engine!");
+
+    build();
+
+    $('q').value="";
+    $('q').focus();
+}
+function handleQuery(e,q) { // Handle search query
+    var key=e.keyCode || e.which;
+
+    if(key==13) { // enter
+        if(q.lastIndexOf("!")!=-1) {
+            var x=q.lastIndexOf("!"),found=false;
+
+            for(var i=0;i<search.length;i++) {
+                if(search[i][0]==q.substr(x)) { // Find "!?"
+                    found=true; window.location=search[i][1]+q.substr(0,x).replace(/&/g,"%26");
+                }
+            }
+            if(!found) { // Invalid "!?", use default
+                window.location=ss+q.substr(0,x).replace(/&/g,"%26");
+            }
+        } else { // "!?" where not specified, use default
+            window.location=ss+q.replace(/&/g,"%26");
+        }
+    }
+}
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="base64.js"></script>
+<script>
+
+$.ajax({
+           url : "content-YBA5MY",
+           dataType: "text",
+           success : function (data) {
+               $("#du").text(data);
+           }
+       });
+
+
+//Attempts at saving from textarea, for later refrence maybe
+
+/**
+var container = document.querySelector("#du");
+var anchor = document.querySelector("#update");
+
+anchor.onclick = function() {
+    anchor.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(container.value);
+    anchor.download = 'test.txt';
+};
+**/
+
+/**function buidtodo(){
+    var tododata = ("#du");
+    return tododata;
+}
+
+$(function(){
+    $("#du").submit(function(event){
+        event.prevenetDefault();
+        var tododata = buildtodo();
+        window.location.href="data:application/octet-stream;base64,"+Base64.encode(tododata);
+    });
+});
+**/
+ 
+
+
+</script>
+
+<body onload="javascript:init(); jquery:init();">
+   <h1 id="header">あ<span id="n1">ん</span>た<span id="n2">バカ</span>ァ</h1>
+    <div id="wrap">
+     <input  autofocus type="text" id="q" value="" placeholder="" onkeypress="javascript:handleQuery(event,this.value);" onfocus="this.value=this.value" />
+    </div>
+    <div class="links" id="one">
+        <div id="left" class="show">
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+        </div>
+        <b class="folder" id="chan">4chan</b>
+        <div id="right" class="show">
+           
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+        </div>
+    </div>
+    <div class="links" id="two">
+        <div id="left" class="show">
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+        </div>
+        <b class="folder" id="work">Work</b>
+        <div id="right"class="show">
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+        </div>
+    </div>
+    <div class="links" id="three">
+        <div id="left" class="show">
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+        </div>
+        <b class="folder" id="fun">Fun</b>
+        <div id="right"class="show">
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+        </div>
+    </div>
+    <div class="links" id="four">
+        <div id="left"class="show">
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+        </div>
+        <b class="folder" id="msc">Msc</b>
+        <div id="right"class="show">
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+            <a href="https://www.google.com">Link</a>
+        </div>
+    </div>
+
+    <!--
+        This is where the todo list starts. 
+            It works by reading (and hopefully writing) a file that's linked to the root file of my xpad client.
+            If you want this to work on your machine, download xpad and use $ln in the command line to make a hard link between the xpad file and your desired read location. This doesn't work on windows so you're out of luck if that's the case. If you don't want this, just comment it out.
+    -->
+
+    <div id="notes">
+        <div id="todo">
+            <h3 id="totitle"><b>Todo List</b></h3>
+            <textarea id="du">
+            </textarea> 
+            <!--<p id="bbg"><button type="submit" id="update">Update</button></p>
+            <p><a href="#" id="update">Update</a></p>
+            <!-->
+        </div>
+    </div>
+    <!--
+    <div id="thread">
+        <h3>Pinned Threads</h3>
+            I'll be adding a thread watcher for 4chan once I get the API figured out
+    </div>
+    <-->
+    <div id="border"></div>
+    <div id="bumper"></div>
+</body>
