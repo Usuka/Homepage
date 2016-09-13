@@ -33,9 +33,7 @@ In chrome, this can be fixed by editing "Experimental Web Platform Features" und
 #To-do list
 WORK IN PROGRESS
 
-If for some strange reason, you feel the need to use this, you'll need to have xpad installed on your computer.
-just look it up in your package manager, it should be there somewhere.
+This is a pretty simple element right now, all it does is read a local .txt and paste it into a textarea. 
+I currently have it set to read the savefile fom xpad but you could change it to anything by changin the source directory in the jquery section.
 
-After that just $ln Content-whatever (or whatever your xpad save file is called) to a copy of it in the diretory of the homepage. Jquery doesn't play nice with parent diretories.
-
-I suppose you could use this with any other .txt based document, but that's your problem, not mine.
+In the future, I will add a new document / save function and formatting tools.
