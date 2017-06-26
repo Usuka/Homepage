@@ -43,14 +43,14 @@ This Homepage will be cooler in time. Just wait for me to get around to it and p
     /*
     Use these to change colours
     */
-    --text:#d2deab;
-    --main-bg:#170f0d;
-    --fg-one:#57434c;
-    --fg-two:#997744;
-    --fg-three:#452e22;
+    --text:#dfd6d9;
+    --main-bg:#1f1a18;
+    --fg-one:#242F33;
+    --fg-two:#5C6664;
+    --fg-three:#5C6664;
     --shadow:#100908;
     --bar-bg:#312c38;
-    --page-bg:#2E272A;
+    --page-bg:#1f1a18;
     
     /* 
     Pink Neon
@@ -79,19 +79,19 @@ This Homepage will be cooler in time. Just wait for me to get around to it and p
     transition: all 0.5s;
 }
 html {
-    background: var(--page-bg) url("bg1.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: left top;
+    background: var(--page-bg) url("../Pictures/wallpapers/art2.jpg");
+    background-size: fill;
+    /*background-repeat: none;*/
+    background-position: center;
     color: var(--text);
-    font-family: "Terminus", monospace;
+    font-family: "xos4 Terminus", monospace;
     font-size: 14px;
 }
 body {
     background-color: var(--main-bg);
     box-shadow: 5px 5px 5px var(--shadow);
     margin-right: auto;
-    margin-top: 5%;
+    margin-top: 8%;
     margin-bottom: 2%;
     margin-left: auto;
     text-align: center;
@@ -109,9 +109,10 @@ body {
     height: 88%;
     width: 80%;
     z-index: -4;
-    background: var(--main-bg) url("bg2.jpg");
+    background: var(--main-bg) url("../Pictures/wallpapers/wall24.jpg");
     box-shadow: 0px 10px 5px var(--shadow);
 }
+
 #bumper{
     position: absolute;
     margin: auto;
@@ -144,6 +145,7 @@ h1{
 #header #n2 {
     animation: neonspark 1s ease-in 3s infinite alternate; 
 }
+/*
 @keyframes neonspark  {
     
     0% {
@@ -166,7 +168,7 @@ h1{
                      2px 2px 11px var(--neon-4);
     }
 }
-
+/**/
 input, select, textarea{
     background: var(--fg-one);
     width: 80%;
@@ -211,17 +213,6 @@ input, select, textarea{
 .links:hover .show{
     z-index: 1;
 }
-
-/*
-
-Bar width
-
-This section is used for the sizing of each section when it's hovered.
-What you want to set the margins to is: - ( Hovered Width - Initial Width ) / 2
-and set the respective title margin to that value but positive.
-
-*/ 
-
 #one:hover{
     width: 580px;
     margin-left: -160px;
@@ -254,10 +245,6 @@ and set the respective title margin to that value but positive.
 #four:hover #msc {
     left: 170px;
 }
-
-
-
-
 .folder{
     padding: 0px 40px 2px 40px;
     font-size: 14px;
@@ -307,7 +294,7 @@ float: right;
     position: absolute;
     background: none;
     right: 15%;
-    top: 5%;
+    top: 10%;
     width: 220px;
     height: 480px;
     border-style: none;
@@ -388,10 +375,20 @@ float: right;
     height: 80px;
     border-style: none;
     border: none;
-    box-shadow: 5px 5px 5px var(--shadow); 
+    box-shadow: 5px 5px 5px var(--shadow);
 }
 #totitle{
     box-shadow: 3px 3px 3px var(--shadow);
+    display: inherit;
+}
+
+@media only screen and (max-width: 1200px) {
+    #notes {
+        display: none;
+    }
+    body {
+        margin-top: 10%;
+    }
 }
 </style>
 
