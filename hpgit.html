@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!--
+Simple homepage
+Author: Usuka
+Credit to Twily for his search bar JS because I'm too lazy to make my own
+
+to change links, edit content in <a>
+to change title, edit content in <h1> and uncomment that shit.
+to change search options, ctrl+f //Search engines
+to change section width, ctrl+f tab width
+
+I think that's about it, have fun.
+
+"Do you wanna be like brown fububu? Here's how to do it:
+
+    Install linux
+    Listen to smooth jazz and post-rock progcore
+    Like asuka
+    Learn how to computer"
+
+        -animeposter from /w/
+
+This Homepage will be cooler in time. Just wait for me to get around to it and push more features to github.
+-->
+<html>
+<title>
+  Home
+</title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<style type="text/css">
+:root{
+  /*This is where colours live, get you some*/
+  --text:#7C7B7C;
+  --texttwo:#F7F9FC;
+  --bg:#D8F0FC;
+  --body:#7C7B7C;
+  --fg-one:#d4e0fa;
+  --fg-two:#bcd5f3;
+  --fg-three:#ddc3e0;
+  --fg-four:#eecee5;
+  --fg-five:#f4dae3;
+  --shadow:#070707;
+  --textshadow:#070707;
+  --title:#F7F9FC;
+}
+* {
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.7s;
+  word-wrap: none;
+  white-space: nowrap;
+  font-smooth: never;
+  -webkit-font-smoothing: none;}
+html {
+  background:url("tide.jpg") ;
+  background-size: fit;
+  background-repeat: repeat;
+  background-position: center;
+  color: var(--text);
+  font-family: 'Open Sans', monospace;
+  font-size: 13pt;
+  font-kerning: none;}
+body {
+}
+input, select, textarea{
+  background: var(--title);
+  width: 300px;
+  height: 40px;
+  padding: 0px 10px 0px 10px;
+  margin: 20px 20px 0px -40px;
+  box-shadow: 3px 3px 3px var(--shadow);}
+#q {
+  border: 2px none var(--title);
+  font-family: "Open Sans", monospace;
+  color: var(--text);
+  text-align: center;
+  font-size: 11pt;
+  box-shadow: 3px 3px 3px var(--shadow);
+  text-shadow: 1.5px 0px 0px black;
+  border: 6px double black}
+#title{
+  width: 300px;
+  background-color: var(--textshadow);
+  border: 2px solid silver;
+  margin: 20px 20px 10px -40px;
+  padding: 0px 14px 0px 14px;
+  text-align: center;
+  box-shadow: 3px 3px 3px var(--shadow);}
+#body{
+  position: sticky;
+  background-color: var(--body);
+  box-shadow: 3px 3px 3px var(--shadow);
+  margin: 11% auto auto 10%;
+  padding: 10px 10px 10px 10px;
+  width: 60px;
+  height: 580px;
+}
+.cage{
+  height:40px;
+  width: auto;}
+.cat{
+  margin: 35px 5px 20px -40px;
+  padding: 15px 5px 0px 5px;
+  text-align: center;
+  box-shadow: 3px 3px 3px var(--shadow);
+  text-shadow: 1.5px 1.5px 0px var(--textshadow);
+  height: 40px;
+  width: 200px;
+  color: var(--texttwo);
+  display: block;
+  z-index: 1;
+  transition: all 0.5s;
+  font-weight: 600;}
+.lynx{
+  visibility: hidden;
+  width: 0;
+  background-color: inherit;
+  overflow: hidden;
+  position: relative;
+  top: -75px;
+  left: 160px;
+  height: 35px;
+  padding: 15px 5px 5px 5px;
+  box-shadow: 3px 3px 2px var(--shadow);
+  text-align: right;
+  font-size: 11pt;
+  font-weight: 500;
+  z-index: 2;}
+a{
+  padding: 0px 5px 0px 5px;
+  color: var(--text);
+  display: inline;
+  visibility: none;}
+a:hover {
+  text-shadow: 1px 2px 0px var(--text);
+  marign-left:-1px;
+  transition: shadow 0.3s}
+.one {
+  background-color: var(--fg-one);
+  color: var(--fg-one);}
+.two {
+  background-color: var(--fg-two);
+  color: var(--fg-two);}
+.three {
+  background-color: var(--fg-three);
+  color: var(--fg-three);}
+.four {
+  background-color: var(--fg-four);
+  color: var(--fg-four);}
+.five{
+  background-color: var(--fg-five);
+  color: var(--fg-five);}
+.cage:hover > .lynx {
+  box-shadow: 3px 3px 3px var(--shadow);
+  padding-right: 25px;
+  visibility: visible;}
+.cage:hover > * > a {
+  visibility: visible;}
+/*tab width*/
+.cage:hover > #post {
+  width: 180px;}
+.cage:hover > #do {
+  width: 260px;}
+.cage:hover > #fun {
+  width: 180px;}
+.cage:hover > #oni {
+  width: 150px;}
+.cage:hover > #train {
+  width: 250px;}
+img {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  border: 6px double white;
+  box-shadow: 5px 5px 5px var(--shadow);
+}
+</style>
+<script type="text/javascript" language="javascript">
+var $=function(id) { return document.getElementById(id); };
+var search=[ // Search engines
+    ["",    "https://www.google.com/#q="],                                          // Google (Default)
+    ["!o",  "https://www.google.com/#q="],                                          // Google
+    ["!i",  "https://www.google.com/search?tbm=isch&q="],                           // Google Images
+    ["!y",  "https://www.youtube.com/results?search_query="],                       // YouTube
+    ["!w",  "http://en.wikipedia.org/w/index.php?search="],                         // Wikipedia
+    ["!t",  "http://shop.tcgplayer.com/magic/product/show?ProductName="],           // TCGplayer
+    ["!a",  "https://animebytes.tv/torrents.php?searchstr="],                       // AnimeBytes
+    ["!g",  "https://gazellegames.net/torrents.php?order_by=relevance&searchstr="], // Gazellegames
+    ["!r",  "https://apollo.rip/torrents.php?searchstr"],                           // Apollo
+    ["!x",  ""], //Exhentai ( ͡° ͜ʖ ͡°)
+];
+var ss="";
+function init() {
+    for(var i=0;i<search.length;i++) if(search[i][0]=="") ss=search[i][1];
+    if(ss=="") alert("Error: Missing default search engine!");
+
+    build();
+
+    $('q').value="";
+    $('q').focus();
+}
+function handleQuery(e,q) { // Handle search query
+    var key=e.keyCode || e.which;
+
+    if(key==13) { // enter
+        if(q.lastIndexOf("!")!=-1) {
+            var x=q.lastIndexOf("!"),found=false;
+
+            for(var i=0;i<search.length;i++) {
+                if(search[i][0]==q.substr(x)) { // Find "!?"
+                    found=true; window.location=search[i][1]+q.substr(0,x).replace(/&/g,"%26");
+                }
+            }
+            if(!found) { // Invalid "!?", use default
+                window.location=ss+q.substr(0,x).replace(/&/g,"%26");
+            }
+        } else { // "!?" where not specified, use default
+            window.location=ss+q.replace(/&/g,"%26");
+        }
+    }
+}
+</script>
+<body onload="javascript:init()";>
+  <div id="body">
+
+    <h1 id="title">
+      こんにちは
+    </h1>
+
+      <input  autofocus type="text" id="q" value="" placeholder="" onkeypress="javascript:handleQuery(event,this.value);" onfocus="this.value=this.value" />
+    <div class="cage">
+      <b class="cat one">Mail</b>
+      <div class="lynx one" id="post">
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+      </div>
+    </div>
+    <div class="cage">
+      <b class="cat two">Productivity</b>
+      <div class="lynx two" id="do">
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+      </div>
+    </div>
+    <div class="cage">
+      <b class="cat three">Entertainment</b>
+      <div class="lynx three" id="fun">
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+      </div>
+    </div>
+    <div class="cage">
+      <b class="cat four">4chan</b>
+      <div class="lynx four" id="oni">
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+      </div>
+    </div>
+    <div class="cage">
+      <b class="cat five">Trackers</b>
+      <div class="lynx five" id="train">
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+        <a href="https://google.com">Link</a>
+      </div>
+    </div>
+  </div>
+  <img src="musuko.jpg" alt=Whatever>
+</body>
